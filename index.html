@@ -5,13 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AH Vertex Solution - IT Solutions</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<!-- AOS Animation CSS -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
@@ -21,7 +16,6 @@
     --dark: #0f172a;
 }
 
-/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -29,29 +23,35 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+html, body {
+    width: 100%;
+    overflow-x: hidden;
     background: var(--dark);
     color: white;
     scroll-behavior: smooth;
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 20px;
+   
 }
 
 section {
+    width: 100%;
     padding: 100px 0;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 nav {
     position: fixed;
     width: 100%;
     backdrop-filter: blur(12px);
-    background: rgba(15, 23, 42, 0.7);
-    padding: 20px 0;
+    background: rgba(15, 23, 42, 0.85);
+    padding: 18px 0;
     z-index: 1000;
 }
 
@@ -82,19 +82,32 @@ nav .container {
     text-decoration: none;
     color: white;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
     color: var(--secondary);
 }
 
-/* HERO */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ================= HERO ================= */
+
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle at top left, #1e293b, #0f172a);
+    padding-top: 100px;
+    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.9)),
+        url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .hero h1 {
@@ -109,6 +122,9 @@ nav .container {
     margin: 20px 0 40px;
     color: #cbd5e1;
     font-size: 18px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn {
@@ -127,7 +143,8 @@ nav .container {
     box-shadow: 0 10px 30px rgba(99,102,241,0.5);
 }
 
-/* SERVICES */
+/* ================= SERVICES ================= */
+
 .services h2 {
     text-align: center;
     margin-bottom: 60px;
@@ -136,42 +153,27 @@ nav .container {
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
+@media (max-width: 768px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .service-card {
-    position: relative;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
     padding: 40px 30px;
     border-radius: 20px;
     transition: 0.4s;
-    overflow: hidden;
-}
-
-.service-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 2px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: 0.4s ease;
-}
-
-.service-card:hover::before {
-    opacity: 1;
+    text-align: center;
 }
 
 .service-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(99,102,241,0.3);
 }
 
@@ -181,16 +183,18 @@ nav .container {
     background: linear-gradient(to right, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: 0.4s;
 }
 
-.service-card:hover .service-icon {
-    transform: scale(1.2) rotate(5deg);
+.service-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
 }
 
-/* ABOUT */
+/* ================= ABOUT ================= */
+
 .about {
     text-align: center;
+    background: linear-gradient(to right, #111827, #0f172a);
 }
 
 .about h2 {
@@ -198,9 +202,68 @@ nav .container {
     margin-bottom: 20px;
 }
 
-/* CONTACT */
+.about p {
+    max-width: 750px;
+    margin: auto;
+    color: #cbd5e1;
+}
+
+/* ================= APPROACH ================= */
+
+.approach {
+    text-align: center;
+    background: linear-gradient(to right, #0f172a, #111827);
+}
+
+.approach h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.section-intro {
+    max-width: 750px;
+    margin: 0 auto 60px;
+    color: #cbd5e1;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.approach-card {
+    background: rgba(255,255,255,0.05);
+    padding: 35px 25px;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.approach-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(99,102,241,0.25);
+}
+
+.approach-card h3 {
+    margin-bottom: 15px;
+}
+
+.approach-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* ================= CONTACT ================= */
+
 .contact {
     text-align: center;
+    background: linear-gradient(to right, #0f172a, #111827);
 }
 
 .contact form {
@@ -228,12 +291,48 @@ footer {
     text-align: center;
     padding: 40px 0;
     color: #94a3b8;
+    background: #0b1120;
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
+/* ================= RESPONSIVE ================= */
+
+@media(max-width: 768px){
+
+    section {
+        padding: 70px 0;
+    }
+
+    .hero {
+        background-attachment: scroll;
+    }
+
     .hero h1 {
-        font-size: 38px;
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #0f172a;
+        width: 220px;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        border-radius: 10px;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 }
 </style>
@@ -245,12 +344,18 @@ footer {
 <nav>
     <div class="container">
         <div class="logo">AH Vertex Solution</div>
-        <ul class="nav-links">
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#services">Expertise</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
     </div>
 </nav>
 
@@ -258,8 +363,66 @@ footer {
 <section class="hero" id="home">
     <div class="container" data-aos="fade-up">
         <h1>Building Digital Excellence</h1>
-        <p>We craft scalable, high-performance software for modern businesses.</p>
-        <button class="btn">Get Started</button>
+        <p>We craft scalable, high-performance software and cloud-driven solutions for modern enterprises.</p>
+        <button class="btn" onclick="scrollToContact()">Get Started</button>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container" data-aos="fade-right">
+        <h2>About AH Vertex Solution</h2>
+        <p>
+            AH Vertex Solution is a IT consulting and product engineering company delivering 
+            innovative, secure, and scalable digital solutions for enterprises.
+            <br><br>
+            We specialize in architecting mission-critical systems that drive operational efficiency, 
+            accelerate digital transformation, and enable sustainable business growth. Our approach 
+            combines deep technical expertise with strategic thinking to ensure every solution aligns 
+            with long-term business objectives.
+            <br><br>
+            By leveraging modern technologies, cloud-native architectures, and industry best practices, 
+            we help organizations modernize legacy systems, optimize infrastructure, and build 
+            future-ready digital ecosystems that scale with confidence.
+        </p>
+    </div>
+</section>
+
+<!-- TURNING CHALLENGES INTO SOLUTIONS -->
+<section class="approach">
+    <div class="container" data-aos="fade-left">
+        <h2>Turning Challenges into Solutions</h2>
+        <p class="section-intro">
+            We understand your systems first—then architect, build, and scale technology that drives real business impact.
+        </p>
+
+        <div class="approach-grid">
+            <div class="approach-card">
+                <h3>Analyze & Strategize</h3>
+                <p>
+                    We assess your current architecture, identify technical gaps, and define a clear,
+                    scalable roadmap. Our approach balances performance, cost, risk, and long-term
+                    sustainability before development begins.
+                </p>
+            </div>
+
+            <div class="approach-card">
+                <h3>Design & Engineer</h3>
+                <p>
+                    Our cross-functional engineering teams deliver production-ready solutions across
+                    cloud-native infrastructure, AI-powered systems, and end-to-end product development—
+                    aligned with your business goals.
+                </p>
+            </div>
+
+            <div class="approach-card">
+                <h3>Optimize & Scale</h3>
+                <p>
+                    We enhance system reliability, automate operations, and implement performance and
+                    cost optimization strategies to ensure your platform scales efficiently as your business grows.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -269,45 +432,43 @@ footer {
         <h2 data-aos="fade-up">Our Expertise</h2>
         <div class="service-grid">
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-icon"><i class="fas fa-code"></i></div>
-                <h3>Web Engineering</h3>
-                <p>Enterprise-grade web applications using modern frameworks.</p>
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Custom Software Engineering</h3>
+                <p>
+                    End-to-end development of scalable, maintainable, and performance-driven 
+                    software solutions tailored to complex business and operational requirements.
+                </p>
             </div>
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-icon"><i class="fas fa-mobile-screen"></i></div>
-                <h3>Mobile Solutions</h3>
-                <p>Cross-platform mobile apps with seamless UX.</p>
-            </div>
-
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card" data-aos="fade-up">
                 <div class="service-icon"><i class="fas fa-cloud"></i></div>
-                <h3>Cloud & DevOps</h3>
-                <p>Secure deployments, automation & scalable infrastructure.</p>
+                <h3>Cloud & DevOps Engineering</h3>
+                <p>
+                    Design and implementation of secure cloud-native architectures, CI/CD pipelines, 
+                    infrastructure as code (IaC), and scalable environments optimized for high availability and performance.
+                </p>
             </div>
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-icon"><i class="fas fa-headset"></i></div>
-                <h3>IT Support</h3>
-                <p>Reliable 24/7 technical support, maintenance, and infrastructure monitoring.</p>
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <h3>IT Operations & Support</h3>
+                <p>
+                    Continuous system monitoring, incident management, performance tuning, and infrastructure maintenance 
+                    to ensure stability, security, and operational continuity.
+                </p>
             </div>
 
-            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                <h3>IT Consultation</h3>
-                <p>Strategic IT consulting services to optimize technology and drive digital transformation.</p>
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Technology Strategy & Advisory</h3>
+                <p>
+                    Technical assessment, architecture consulting, and digital transformation planning 
+                    aligned with long-term business and innovation objectives.
+                </p>
             </div>
 
         </div>
-    </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-    <div class="container" data-aos="fade-right">
-        <h2>About AH Vertex Solution</h2>
-        <p>We are a premium IT consulting and product engineering company delivering innovative digital solutions globally.</p>
     </div>
 </section>
 
@@ -315,26 +476,50 @@ footer {
 <section class="contact" id="contact">
     <div class="container" data-aos="fade-up">
         <h2>Let's Build Together</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea rows="5" placeholder="Your Message"></textarea>
+        <form onsubmit="sendEmail(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
             <button class="btn">Send Message</button>
         </form>
     </div>
 </section>
 
 <footer>
-    © 2026 AH Vertex Solution. Crafted with excellence.
+    © 2026 AH Vertex Solution. All Rights Reserved.
 </footer>
 
-<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({
     duration: 1000,
     once: true
 });
+
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+}
+
+function scrollToContact() {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+}
+
+function sendEmail(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    const subject = encodeURIComponent("Website Inquiry from " + name);
+    const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        "Message:\n" + message
+    );
+
+    window.location.href = `mailto:ajinkya.aglave@ahvertexsolution.com?subject=${subject}&body=${body}`;
+}
 </script>
 
 </body>
